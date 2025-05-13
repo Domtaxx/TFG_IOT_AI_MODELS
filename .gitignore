@@ -1,1 +1,6 @@
 AI_models/Dataset/*
+/bin
+/include
+/lib
+/lib64
+/share

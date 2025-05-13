@@ -151,7 +151,7 @@ def malformed_attack():
 
 def main():
     try:
-        ddos_burst_count = 0  # How many times to run DDoS at the start
+        ddos_burst_count = 1  # How many times to run DDoS at the start
         round_num = 0
 
         while True:
@@ -161,8 +161,7 @@ def main():
             else:
                 # Alternate between malformed and slowite
                 attack_name, attack_func = random.choice([
-                    ("malformed", malformed_attack)#,
-                    #("slowite", slowite_attack)
+                    #("malformed", slowite_attack),
                 ])
 
             print(f"\n[ROUND {round_num}] Running {attack_name.upper()} attack")
