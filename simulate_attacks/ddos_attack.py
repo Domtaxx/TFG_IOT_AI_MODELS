@@ -9,7 +9,7 @@ import paho.mqtt.client as mqtt
 BROKER = "raspberrypi.local"
 PORT = 1883
 TOPIC = "dos/flood"
-DOS_CLIENTS = 1000
+DOS_CLIENTS = 1000000
 MESSAGES_PER_CLIENT = 200000
 CSV_LOG_FILE = "ddos_attacks_log.csv"
 

@@ -4,6 +4,8 @@
 const char* ssid = "WQ Router";
 const char* password = "UliMar17";
 const char* mqtt_server = "raspberrypi.local";  // e.g., "192.168.1.100"
+const char* mqtt_username = "domtaxx";
+const char* mqtt_password = "TFG2025";
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -26,7 +28,7 @@ void setup_wifi() {
 void reconnect() {
   while (!client.connected()) {
     Serial.print("Attempting MQTT connection...");
-    if (client.connect("ESP32_Publisher")) {
+    if (client.connect("ESP32Client_iot_temp", mqtt_username, mqtt_password)) {
       Serial.println("Connected!");
     } else {
       Serial.print("Failed, rc=");
@@ -57,5 +59,5 @@ void loop() {
   Serial.println(message);
 
   client.publish("iot/temperature", message);
-  delay(3000);  // Publish every 3 seconds
+  delay(3500);  // Publish every 3 seconds
 }

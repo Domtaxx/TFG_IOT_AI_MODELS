@@ -5,13 +5,14 @@
 const char* ssid = "WQ Router";
 const char* password = "UliMar17";
 const char* mqtt_server = "raspberrypi.local";  // e.g., "192.168.1.100"
-
+const char* mqtt_username = "domtaxx";
+const char* mqtt_password = "TFG2025";
 WiFiClient espClient;
 PubSubClient client(espClient);
 
 // Topics
 const char* topic_sub = "iot/#";           // Subscribe to this topic
-const char* topic_pub = "iot/intensity-response";  // Publish response here
+const char* topic_pub = "intensity-response";  // Publish response here
 
 // 🔹 Function to Connect to WiFi
 void setup_wifi() {
@@ -28,7 +29,7 @@ void setup_wifi() {
 void reconnect_mqtt() {
     while (!client.connected()) {
         Serial.print("Connecting to MQTT...");
-        if (client.connect("ESP32_Subscriber")) {  // Client ID must be unique
+        if (client.connect("ESP32Client_iot_response", mqtt_username, mqtt_password)) {  // Client ID must be unique
             Serial.println("Connected!");
             client.subscribe(topic_sub);  // Subscribe to intensity topic
         } else {
